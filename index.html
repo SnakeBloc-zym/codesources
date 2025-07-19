@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Snake集团代码资源中心</title>
+	<link rel="shortcut icon" href="https://cdn.luogu.com.cn/upload/usericon/1393230.png">
+	<script src="https://cdn.jsdmirror.com/npm/anchor-js/anchor.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css">
+	<link rel="stylesheet"
+		href="https://cdn.jsdmirror.com/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css">
+	<script src="https://cdn.jsdmirror.com/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+	<script src="https://cdn.jsdmirror.com/gh/highlightjs/cdn-release@11.9.0/build/languages/markdown.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/katex@0.16.8/dist/katex.min.css">
+	<script src="https://cdn.jsdmirror.com/npm/katex@0.16.8/dist/katex.min.js"></script>
+	<script defer src="https://cdn.jsdmirror.com/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+		onload="renderMathInElement(document.body);"></script>
+	<script src="https://cdn.jsdmirror.com/npm/marked@15.0.7/marked.min.js"></script>
+	<script src="https://cdn.jsdmirror.com/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&display=swap">
+	<style>
+		#preview-modal pre code.hljs {
+			font-family: 'Consolas';
+			display: block;
+			padding: 12px;
+			padding-left: 20px;
+			margin: 2rem 0;
+			background: #f8fafc;
+			border-radius: 10px;
+			border: 1px solid #e2e8f0;
+			overflow-x: auto;
+			overflow-y: auto;
+			line-height: 1.6 !important;
+			font-size: 0.95rem !important;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		}
+
+		#preview-modal blockquote {
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+			border-left: 4px solid #0ea5e9 !important;
+			margin: 1.5rem 0 !important;
+			padding: 0.4rem 1.8rem !important;
+			padding-top: 1.5rem !important;
+			border-radius: 0 10px 10px 0 !important;
+			font-size: 1.05rem !important;
+			box-sizing: inherit;
+			display: block;
+			margin-block-start: 1em;
+			margin-block-end: 1em;
+			margin-inline-start: 40px;
+			margin-inline-end: 40px;
+			unicode-bidi: isolate;
+		}
+
+		#preview-modal blockquote p {
+			margin-top: 0px;
+		}
+
+		img {
+			max-width: 100% !important;
+			height: auto !important;
+			border-radius: 8px !important;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+			margin: 1.5rem 0 !important;
+			transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+			cursor: pointer !important;
+			display: block !important;
+			border-style: none;
+			overflow: clip;
+		}
+
+		img:hover {
+			transform: scale(1.02) !important;
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+		}
+
+		#preview-modal ul {
+			display: block;
+			list-style-type: disc;
+			margin-block-start: 1em;
+			margin-block-end: 1em;
+			padding-inline-start: 40px;
+			unicode-bidi: isolate;
+		}
+
+		#preview-modal ol {
+			display: block;
+			list-style-type: decimal;
+			margin-block-start: 1em;
+			margin-block-end: 1em;
+			padding-inline-start: 40px;
+			unicode-bidi: isolate;
+		}
+
+		svg {
+			pointer-events: none;
+		}
+
+		#preview-modal p {
+			margin-bottom: 1.3rem;
+			font-size: 1.1rem;
+		}
+
+		#preview-modal a {
+			background-position: 0 100%;
+			background-repeat: repeat-x;
+			background-size: 5px 5px;
+			text-decoration: none;
+			transition: all .35s ease;
+			color: #000;
+			background-image: linear-gradient(to bottom, rgba(14, 165, 233, .55) 0%, rgba(14, 165, 233, .55) 100%);
+		}
+
+		#preview-modal a:hover {
+			color: white;
+			background-size: 5px 50px;
+		}
+
+		#preview-modal table {
+			border-collapse: collapse !important;
+			border-spacing: 0 !important;
+			overflow-x: auto;
+			min-width: 600px !important;
+			font-size: 1rem !important;
+			width: 100%;
+			margin: 2rem 0;
+			border-radius: 10px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			border: 1px solid #e2e8f0;
+			background: white;
+		}
+
+		#preview-modal thead {
+			display: table-header-group;
+			vertical-align: middle;
+			unicode-bidi: isolate;
+			border-color: inherit;
+			border-radius: 10px;
+		}
+
+		#preview-modal tbody {
+			border-radius: 10px;
+		}
+
+		#preview-modal tr {
+			display: table-row;
+			vertical-align: inherit;
+			unicode-bidi: isolate;
+			border-color: inherit;
+		}
+
+		#preview-modal th {
+			background: #f8fafc !important;
+			font-weight: 600 !important;
+			color: #374151 !important;
+			border-bottom: 2px solid #e2e8f0 !important;
+		}
+
+		#preview-modal th,
+		#preview-modal td {
+			padding: 12px 16px !important;
+			font-size: 1rem !important;
+			border-bottom: 1px solid #e2e8f0;
+			border-right: 1px solid rgba(34, 36, 38, .1);
+			white-space: nowrap;
+		}
+
+		#preview-modal table tbody tr:hover {
+			background-color: #f8fafc;
+		}
+
+		#preview-modal .codecopy-btn {
+			opacity: 0.7 !important;
+			min-height: 1em;
+			outline: 0;
+			vertical-align: baseline;
+			position: absolute;
+			top: 10px !important;
+			right: 10px !important;
+			background: #f8fafc;
+			padding: 6px 10px !important;
+			color: rgba(0, 0, 0, 0.6);
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			box-shadow: transparent 0px 0px 0px 1px inset, rgba(34, 36, 38, 0.15) 0px 0px 0px 0px inset;
+			cursor: pointer;
+			z-index: 10;
+			text-transform: none;
+			text-shadow: none;
+			font-weight: 700;
+			line-height: 1em;
+			font-style: normal;
+			text-align: center;
+			text-decoration: none;
+			border-radius: .28571429rem;
+			font-size: 0.8rem !important;
+			display: inline-block !important;
+			padding-block: 1px;
+			padding-inline: 6px;
+			margin: 0 .25em 0 0;
+		}
+
+		#preview-modal .codecopy-btn icon {
+			font-weight: 0.8rem !important;
+		}
+
+		#preview-modal .codecopy-btn:active {
+			background-color: rgb(186, 187, 188);
+			color: rgba(0, 0, 0, 0.9);
+		}
+
+		#preview-modal .codecopy-btn:hover {
+			background: #fff;
+			transform: translateY(-1px);
+			background-color: rgb(202, 203, 205);
+			box-shadow: transparent 0px 0px 0px 1px inset, rgba(34, 36, 38, 0.15) 0px 0px 0px 0px inset;
+			color: rgba(0, 0, 0, 0.8);
+		}
+
+		#preview-modal .codecopy-btn:focus {
+			background-color: rgb(202, 203, 205);
+			color: rgba(0, 0, 0, 0.8);
+		}
+	</style>
+	<style>
+		body {
+			font-family: 'LXGW WenKai Screen', sans-serif;
+			background: #f8fafc;
+			color: #333;
+			padding: 20px;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: auto;
+		}
+
+		header {
+			background: linear-gradient(135deg, #f4faff, #e5f2ff);
+			color: #1e1e1e;
+			padding: 20px;
+			border-radius: 7px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 25px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.logo i {
+			font-size: 2rem;
+		}
+
+		.logo-text h1 {
+			font-size: 1.8rem;
+			font-weight: 600;
+			margin-bottom: 5px;
+		}
+
+		.logo-text p {
+			font-size: 0.9rem;
+			opacity: 0.9;
+		}
+
+		.logo-text a {
+			color: #333;
+		}
+
+		.post-card {
+			background-color: white;
+			border-radius: 8px;
+			padding: 1rem;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+			transition: transform 0.3s ease;
+		}
+
+		.post-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.post-title {
+			font-size: 1.2rem;
+			color: #007acc;
+			margin-bottom: 0.5rem;
+		}
+
+		.post-desc {
+			font-size: 0.9rem;
+			color: #666;
+		}
+
+		.codecopy-btn {
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			background: #f8fafc;
+			border: 1px solid #ccc;
+			padding: 4px 8px;
+			cursor: pointer;
+			font-size: 0.8rem;
+			border-radius: 4px;
+		}
+
+		#file-list {
+			display: grid;
+			gap: 1rem;
+			margin-bottom: 1rem;
+		}
+
+		#file-list a {
+			text-decoration: none !important;
+		}
+
+		input[type="text"] {
+			width: calc(100% - 22px);
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		#preview-modal {
+			min-height: 300px;
+			padding: 20px;
+			background: white;
+			border-radius: 8px;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		::-webkit-scrollbar {
+			-webkit-appearance: none;
+			width: 10px;
+			height: 10px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: rgba(128, 135, 139, .8);
+		}
+
+		::-webkit-scrollbar-thumb {
+			cursor: pointer;
+			border-radius: 5px;
+			background: rgba(0, 0, 0, .25);
+			-webkit-transition: color .2s ease;
+			transition: color .2s ease;
+		}
+
+		::-webkit-scrollbar-track {
+			background: rgba(0, 0, 0, .1);
+			border-radius: 0;
+		}
+	</style>
+
+	<style>
+		.loader-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #f8fafc;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			transition: opacity 0.5s ease;
+		}
+
+		.loader {
+			width: 100px;
+			height: 100px;
+			display: inline-block;
+			position: relative;
+		}
+
+		.loader .bounce1,
+		.loader .bounce2 {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background-color: #61E8EA;
+			opacity: 0.6;
+			position: absolute;
+			top: 0;
+			left: 0;
+			-webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+			animation: sk-bounce 2.0s infinite ease-in-out;
+		}
+
+		.loader .bounce2 {
+			-webkit-animation-delay: -1.0s;
+			animation-delay: -1.0s;
+		}
+
+		@-webkit-keyframes sk-bounce {
+
+			0%,
+			100% {
+				-webkit-transform: scale(0.0)
+			}
+
+			50% {
+				-webkit-transform: scale(1.0)
+			}
+		}
+
+		@keyframes sk-bounce {
+
+			0%,
+			100% {
+				transform: scale(0.0);
+				-webkit-transform: scale(0.0);
+			}
+
+			50% {
+				transform: scale(1.0);
+				-webkit-transform: scale(1.0);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="loader-overlay" id="loader">
+		<div class="loader" style="left: 50%; top: 46%; transform: translate(-50% , -50%); position: absolute;">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+		</div>
+		<div
+			style="left: 50%; top: 55%; transform: translate(-50% , -50%); position: absolute; font-size: 1.2rem; font-family: LXGW WenKai Screen;">
+			Loading...</div>
+	</div>
+	<div class="container">
+		<header id="header">
+			<div class="logo">
+				<img src="https://w.saobby.com/w/sbeu7da5">
+				<div class="logo-text">
+					<h1 style="font-family: 'Caveat' !important; font-size: 3rem !important;">Snake Code Sources</h1>
+					<p>知识共享 · 协作创新<br>欢迎向 <a href="https://www.luogu.com.cn/chat?uid=1393230">zhangyimin12345</a>
+						提供代码！代码资源除特殊标注，均可供 <a href="https://hydro.ac/d/Snake/">Snake集团(Hydro OJ)</a>
+						外部成员使用。<br>如有相关建议（功能添加建议、样式优化等），欢迎向 <a
+							href="https://www.luogu.com.cn/chat?uid=1393230">zhangyimin12345</a>
+						私信！</p>
+				</div>
+			</div>
+		</header>
+
+		<input type="text" id="search" placeholder="搜索代码或文档..." />
+
+		<div id="file-list"></div>
+
+		<div id="preview-modal"></div>
+	</div>
+
+	<script>
+		function showLoader() {
+			const loader = document.getElementById('loader');
+			loader.style.display = 'flex';
+			loader.style.opacity = '1';
+		}
+
+		function hideLoader() {
+			const loader = document.getElementById('loader');
+			loader.style.opacity = '0';
+			setTimeout(() => {
+				loader.style.display = 'none';
+			}, 300);
+		}
+
+		window.addEventListener('load', () => {
+			hideLoader();
+		});
+	</script>
+
+	<script>
+		const CODE_DIR = 'code/';
+		const DOC_DIR = 'docs/';
+		const fileExtensions = ['.cpp', '.md'];
+
+		const url = new URL(location.href);
+		const params = new URLSearchParams(url.search);
+		let param1 = params.get('source');
+		let param2 = params.get('links');
+
+		if (!param1 && !param2) {
+			location.href = '?source=home';
+		}
+
+		async function loadFiles() {
+			const res = await fetch('file-list.json');
+			const files = res.json();
+
+			files.then(list => {
+				window.allFiles = list;
+				renderFileList(window.allFiles);
+			});
+		}
+
+		function renderFileList(files) {
+			const fileList = document.getElementById('file-list');
+			fileList.innerHTML = '';
+
+			files.forEach(file => {
+				const card = document.createElement('div');
+				card.className = '';
+				card.innerHTML = `
+			<a href="./?source=${file.path}"><div class="post-card">
+				<div class="post-title">${file.name}</div>
+				<div class="post-desc">${file.description || '暂无描述'}</div>
+			</div></a>
+        `;
+				fileList.appendChild(card);
+			});
+		}
+
+		function renderMath() {
+			if (typeof renderMathInElement === 'function') {
+				renderMathInElement(document.body, {
+					delimiters: [
+						{ left: '$$', right: '$$', display: true },
+						{ left: '$', right: '$', display: false },
+						{ left: '\\(', right: '\\)', display: false },
+						{ left: '\\[', right: '\\]', display: true }
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+				});
+			}
+		}
+
+		function previewFile(path) {
+			const ext = path.split('.').pop().toLowerCase();
+			const url = (ext === 'md' ? DOC_DIR : CODE_DIR) + path;
+
+			fetch(url)
+				.then(res => {
+					if (!res.ok) throw new Error("Error: 你好像走丢了，找不到文件");
+					return res.text();
+				})
+				.then(text => {
+					let content = '';
+					if (ext === 'md') {
+						content = marked.parse(text);
+						document.getElementById('preview-modal').innerHTML = content;
+						hljs.highlightAll();
+						renderMath();
+						anchors.add();
+						addCopyButtons();
+					} else if (ext === 'cpp') {
+						content = `<pre><code class="language-cpp">${hljs.highlight(text, { language: 'cpp' }).value}</code></pre>`;
+						document.getElementById('preview-modal').innerHTML = content;
+						addCopyButtons();
+					}
+				})
+				.catch(err => {
+					document.getElementById('preview-modal').innerHTML = `<p style="color:red;">${err.message}</p>`;
+				});
+		}
+
+		function addCopyButtons() {
+			const preElements = document.querySelectorAll('pre code');
+			preElements.forEach(codeElement => {
+				const button = document.createElement('button');
+				button.innerHTML = '<i class="fa-solid fa-copy"></i>';
+				button.classList.add('codecopy-btn');
+
+				const div = document.createElement('div');
+				div.style = "width:100%;position:relative;";
+				div.appendChild(button);
+				codeElement.before(div);
+
+				new ClipboardJS(button, {
+					text: () => codeElement.innerText.replace(/\n\n/g, "\n")
+				}).on('success', e => {
+					e.trigger.innerHTML = '<i class="fa-solid fa-check"></i>';
+					setTimeout(() => e.trigger.innerHTML = '<i class="fa-solid fa-copy"></i>', 1000);
+				}).on('error', e => {
+					e.trigger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+					setTimeout(() => e.trigger.innerHTML = '<i class="fa-solid fa-copy"></i>', 1000);
+				});
+			});
+		}
+
+		document.getElementById('search').addEventListener('input', function () {
+			const query = this.value.toLowerCase();
+			const filtered = window.allFiles.filter(file => file.name.toLowerCase().includes(query));
+			renderFileList(filtered);
+		});
+
+		if (param1 === 'home') {
+			document.getElementById('preview-modal').style.display = 'none';
+			document.getElementById('search').style.display = 'block';
+			loadFiles();
+		}
+		else if(param2)
+		{
+			document.getElementById('preview-modal').style.display = 'block';
+			document.getElementById('search').style.display = 'none';
+			document.getElementById('header').style.display = 'none';
+			previewFile(param2);
+		}
+		else {
+			document.getElementById('preview-modal').style.display = 'block';
+			document.getElementById('search').style.display = 'none';
+			previewFile(param1);
+		}
+	</script>
+</body>
+
+</html>

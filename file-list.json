@@ -1,0 +1,7 @@
+[
+  { "name": "线段树", "path": "stt.md", "type": "doc", "description": "线段树模板" },
+  { "name": "树状数组", "path": "bit.md", "type": "doc", "description": "树状数组模板" },
+  { "name": "最近公共祖先", "path": "lca.md", "type": "doc", "description": "LCA 模板" },
+  { "name": "火车头", "path": "train.md", "type": "doc", "description": "火车头" },
+  { "name": "快读/快写", "path": "fastio.md", "type": "doc", "description": "快读/快写" }
+]
