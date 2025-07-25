@@ -8,4 +8,4 @@ Snake Code Sources（Public）（Snake集团资源中心（公开））
 
 目前维护者：zhangyimin12345。
 
-（这应该没有 $> 25MB$ 的文件趴）
+（这应该没有 >25MB 的文件趴）
