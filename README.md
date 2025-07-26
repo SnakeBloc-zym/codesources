@@ -9,3 +9,7 @@ Snake Code Sources（Public）（Snake集团资源中心（公开））
 目前维护者：zhangyimin12345。
 
 （这应该没有 >25MB 的文件趴）
+
+## 更新日志
+
+- Update 2025-7-26 添加更新日志、添加字体
